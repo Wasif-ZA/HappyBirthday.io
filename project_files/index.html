@@ -1,13 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .typewriter h1, .typewriter h2 {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: blink-caret .75s step-end infinite;
+            font-size: 1.5rem;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+
+        .habit-card {
+            background-color: white;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: scale(1);
+            transition: transform .3s ease-in-out;
+        }
+
+        .habit-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col justify-center items-center min-h-screen p-4">
+    <div class="w-full max-w-4xl text-center">
+        <div class="typewriter mb-4">
+            <h1 id="padawanMessage" class="text-3xl font-bold">What is your name, young Padawan?</h1>
+            <h2 id="timeBasedGreeting" class="text-2xl font-bold hidden"></h2>
+        </div>
+        <input type="text" id="nameInput" class="text-lg w-full p-2 border-b border-gray-300 bg-transparent mb-6" onkeypress="handleKeyPress(event)">
+        
+        <div id="habitCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 hidden">
+            <div class="habit-card">
+                <input type="text" id="morningHabit" placeholder="Morning Habit" class="w-full p-2 border-b border-gray-300 bg-transparent">
+            </div>
+            <div class="habit-card">
+                <input type="text" id="afternoonHabit" placeholder="Afternoon Habit" class="w-full p-2 border-b border-gray-300 bg-transparent">
+            </div>
+            <div class="habit-card">
+                <input type="text" id="eveningHabit" placeholder="Evening Habit" class="w-full p-2 border-b border-gray-300 bg-transparent">
+            </div>
+            <div class="habit-card">
+                <input type="text" id="nightHabit" placeholder="Night Habit" class="w-full p-2 border-b border-gray-300 bg-transparent">
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
 </html>
