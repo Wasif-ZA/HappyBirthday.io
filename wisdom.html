@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .typewriter-text {
+            border-right: .15em solid orange;
+            white-space: normal;
+            overflow-wrap: break-word;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+
+      
+            #randomImage {
+                border: 10px solid #333;
+                padding: 10px;
+                box-shadow: 10px 10px 5px grey;
+                width: 50%;
+                height: 50%;
+                object-fit: cover;
+            }
+
+            html {
+                border: 10px solid #333;
+                padding: 10px;
+                box-shadow: 10px 10px 5px grey;
+            }
+
+        
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="typewriter flex flex-col items-center justify-center w-full h-full space-y-4"> <!-- Add a container and center the text -->
+        <img id="randomImage" class="w-64 h-64" /> <!-- Add an image element to display the random image -->
+        <h1 id="quoteDisplay" class="text-2xl font-semibold text-gray-800"><span class="typewriter-text"></span></h1> <!-- Change the font of the generated text -->
+        <button class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700" onclick="newQuote(); selectRandomImage();">Generate New Quote</button> <!-- Add a button to generate a new quote -->
+    </div>
+</body>
+
+    <script>
+        var quotes = [
+
+        "Don't watch the clock; do what it does. Keep going.",
+        "Success is not the key to happiness. Happiness is the key to success.",
+        "Believe you can and you're halfway there.",
+        "Duniya mein aise log kaite hai, itne cheez ke aise pau ke saari duniya itni tumari paa",
+        "grab my but will u",
+        "Some people are worth melting for Aarondale",
+        "Would rather sweat in practice or bleed in battle - Aaron",
+        "I am the one who knocks",
+        "I am the danger",
+        "I am batman",
+        "I am vengeance",
+        "Comparison is the theif of joy",
+        "I am the captian now",
+        "all iz well",
+        "what will you have after 500 years",
+        "builti multitool",
+        ""
+        
+    
+    
+    
+    ]; // Replace with your quotes
+
+
+        function typeWriterEffect(element, message, index) {
+            if (index < message.length) {
+                element.innerHTML += message.charAt(index);
+                index++;
+                setTimeout(function() {
+                    typeWriterEffect(element, message, index);
+                }, 100); // Adjust the typing speed by changing the timeout duration
+            }
+        }
+
+        function newQuote() {
+            var randomNumber = Math.floor(Math.random() * (quotes.length));
+            var quote = quotes[randomNumber];
+            var quoteDisplayElement = document.getElementById('quoteDisplay').querySelector('.typewriter-text');
+            quoteDisplayElement.innerHTML = ''; // Clear previous quote
+            typeWriterEffect(quoteDisplayElement, quote, 0);
+        }
+
+        newQuote();
+
+
+        var images = [
+        'Aaaron_greenGoblin.jpg',
+        'JazzHands.jpg',
+        'StarWarsAaron.jpg',
+        'AaaronThePresit.jpg',
+        'AAron_flower.jpg',
+        'AaronAAron.jpg',
+        'AdiColthe.jpg',
+        'BaldingAAron.jpg',
+        'BatmanAaron.jpg',
+        'beachAAaronp2.jpg',
+        'BeachAAron.jpg',
+        'BlurryAAaron.jpg',
+        'Chad_Aaaron.jpg',
+        'CHadest_Aaaron.jpg',
+        'chadFaccesAAron.jpg',
+        'CrazyAAron.jpg',
+        'damnSexyAdi.jpg',
+        'DeminAaaron.jpg',
+        'FedoraAAon.jpg',
+        'Flowers.jpg',
+        'FlowersAaaron.jpg',
+        'FUSSKAaaon.jpg',
+        'heandband_Aaron.jpg',
+        'IMG_20231130_110341_521.jpg',
+        'IMG_20231130_110343_646.jpg',
+        'IMG_20231130_110345_359.jpg',
+        'IMG_20231130_110347_569.jpg',
+        'IMG_20231130_110358_552.jpg',
+        'IMG_20231130_110400_517.jpg',
+        'IMG_20231130_110404_727.jpg',
+        'INLoveAAron.jpg',
+        'JackedAAron.jpg',
+        'JAckedBOis.jpg',
+        'JasonBorneAaaron.jpg',
+        'JBAAron.jpg',
+        'looking_aaron.jpg',
+        'LookingAwayAaaron.jpg',
+        'MOnkeyAAron.jpg',
+        'OneBanna.jpg',
+        'PoutingAaaron.jpg',
+        'Red_aaron.jpg',
+        'shoeTeingAaaron.jpg',
+        'StarWarsAaron.jpg',
+        'Vicking_Aaron.jpg'
+    ];
+    
+    function selectRandomImage() {
+        var randomIndex = Math.floor(Math.random() * images.length);
+        var imagePath = '/' + images[randomIndex];
+        document.getElementById('randomImage').src = imagePath;
+    }
+    </script>
+</body>
+</html>
