@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Parisienne|Playball" rel="stylesheet">
+
+    <style>
+        .frame {
+            margin:50px auto;
+            border:25px solid #222;
+            height:475px;
+            width:350px;
+            -webkit-box-shadow:  px 2px 3px 1px rgba(0, 0, 0, .5);
+            box-shadow:  0px 3px 10px 4px rgba(0, 0, 0, .3);
+        }
+
+        .border {
+            background:white;
+            height:100%;
+            width:100%;
+            -webkit-box-shadow: inset 10px 10px 10px 4px rgba(0, 0, 0, .4);
+            box-shadow: inset 3px 7px 2px 5px rgba(0, 0, 0, .4);
+        }
+
+        .image {
+            position:absolute;
+            height:350px;
+            width:250px;
+            margin-left:50px;
+            margin-top:50px;
+            -webkit-box-shadow: inset 10px 10px 10px 4px rgba(0, 0, 0, .6);
+            box-shadow: inset 3px 7px 2px 5px rgba(0, 0, 0, .1);
+            border:2px inset #c9c9c9;
+        }
+    </style>
+</head>
+<body class="bg-fixed bg-center bg-repeat bg-10% bg-gray-800 min-h-screen flex items-center justify-center">
+    <div class="text-center transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-white border-16 border-gray-800 shadow-inner m-20 h-3/4 p-20">
+        <h1 class="text-4xl font-bold mb-8">Unlock a Memory</h1>
+        <img id="randomImage" src="" alt="Randomly selected image" class="mb-4 max-w-full h-auto border-2 border-t-gray-300 border-b-gray-500 border-l-gray-400 border-r-gray-400 shadow-inner">
+        <p id="memory" class="text-lg mb-4">Unlocked: <span id="memoryDescription"></span></p>
+        <button id="generateMemoryButton" onclick="selectRandomImage()" class="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-blue-500 shadow-blue-500/40 hover:shadow-indigo-500/40 text-white font-bold py-2 px-4 rounded">
+            Generate Memory
+        </button>
+        <button id="newButton" onclick="guessImageStatus('new')" class="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            New
+        </button>
+        <button id="seenButton" onclick="guessImageStatus('seen')" class="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            Seen
+        </button>
+        <div class="mt-4">
+            <button class="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+                <a href="index.php">Home</a>
+            </button>
+        </div>
+        <p id="gameStatus" class="text-2xl font-bold"></p>
+    </div>  
+
+
+    <style>
+        .photo-frame {
+            border: 32px solid #4B5563; /* Adjust the color and size as needed */
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+
+    <script>
+        var images = [
+        {imageName: 'Aaaron_greenGoblin.jpg', description: 'green goblin'},
+        {imageName: 'JazzHands.jpg', description: 'jazzy hands'},
+        {imageName: 'StarWarsAaron.jpg', description: 'Memory of Star Wars'},
+        {imageName: 'AaaronThePresit.jpg', description: 'The Prestige'},
+        {imageName: 'AAron_flower.jpg', description: 'flower'},
+        {imageName: 'AaronAAron.jpg', description: 'Aaron'},
+        {imageName: 'AdiColthe.jpg', description: 'Adi'},
+        {imageName: 'BaldingAAron.jpg', description: 'suit AAron'},
+        {imageName: 'BatmanAaron.jpg', description: 'Batman Aaron'},
+        {imageName: 'beachAAaronp2.jpg', description: 'Beach Aaron part 2'},
+        {imageName: 'BeachAAron.jpg', description: 'Beach Aaron'},
+        {imageName: 'BlurryAAaron.jpg', description: 'Blurry Aaron'},
+        {imageName: 'Chad_Aaaron.jpg', description: 'Chad Aaron'},
+        {imageName: 'CHadest_Aaaron.jpg', description: 'Chadest Aaron'},
+        {imageName: 'chadFaccesAAron.jpg', description: 'Chad Faces Aaron'},
+        {imageName: 'CrazyAAron.jpg', description: 'Crazy Aaron'},
+        {imageName: 'damnSexyAdi.jpg', description: 'Damn Sexy Adi'},
+        {imageName: 'DeminAaaron.jpg', description: 'Denim Aaron'},
+        {imageName: 'FedoraAAon.jpg', description: 'Fedora Aaron'},
+        {imageName: 'Flowers.jpg', description: 'Flowers'},
+        {imageName: 'FlowersAaaron.jpg', description: 'Flowers Aaron'},
+        {imageName: 'FUSSKAaaon.jpg', description: 'Fusska Aaron'},
+        {imageName: 'heandband_Aaron.jpg', description: 'Headband Aaron'},
+        {imageName: 'IMG_20231130_110341_521.jpg', description: 'handband Aaron'},
+        {imageName: 'IMG_20231130_110343_646.jpg', description: 'train Aaron'},
+        {imageName: 'IMG_20231130_110345_359.jpg', description: 'licky face'},
+        {imageName: 'IMG_20231130_110347_569.jpg', description: 'Image 569'},
+        {imageName: 'IMG_20231130_110358_552.jpg', description: 'canbialism Aaron'},
+        {imageName: 'IMG_20231130_110400_517.jpg', description: 'desi Aaron'},
+        {imageName: 'IMG_20231130_110404_727.jpg', description: 'swiggly mirror'},
+        {imageName: 'INLoveAAron.jpg', description: 'In Love Aaron'},
+        {imageName: 'JackedAAron.jpg', description: 'Jacked Aaron'},
+        {imageName: 'JAckedBOis.jpg', description: 'Jacked Bois'},
+        {imageName: 'JasonBorneAaaron.jpg', description: 'Jason Borne Aaron'},
+        {imageName: 'JBAAron.jpg', description: 'JB Aaron'},
+        {imageName: 'looking_aaron.jpg', description: 'Looking Aaron'},
+        {imageName: 'LookingAwayAaaron.jpg', description: 'Looking Away Aaron'},
+        {imageName: 'MOnkeyAAron.jpg', description: 'Monkey Aaron'},
+        {imageName: 'OneBanna.jpg', description: 'One Banana'},
+        {imageName: 'PoutingAaaron.jpg', description: 'Pouting Aaron'},
+        {imageName: 'Red_aaron.jpg', description: 'Red Aaron'},
+        {imageName: 'shoeTeingAaaron.jpg', description: 'Shoe Tying Aaron'},
+        {imageName: 'StarWarsAaron.jpg', description: 'Star Wars Aaron'},
+        {imageName: 'Vicking_Aaron.jpg', description: 'Viking Aaron'},
+        
+        ];
+
+       
+        function selectRandomImage() {
+            var randomIndex = Math.floor(Math.random() * images.length);
+            var imagePath = '/' + images[randomIndex].imageName; // Adjusted to reflect the root path
+            document.getElementById('randomImage').src = imagePath;
+            document.getElementById('memoryDescription').textContent = images[randomIndex].description;
+        }
+
+        // Optional: Load a random image on page load
+        window.onload = selectRandomImage;
+
+        var seenImages = [];
+
+        function guessImageStatus(guess) {
+            var currentImage = document.getElementById('randomImage').src;
+            var gameStatus = document.getElementById('gameStatus');
+        
+            if ((guess === 'new' && seenImages.includes(currentImage)) ||
+                (guess === 'seen' && !seenImages.includes(currentImage))) {
+                gameStatus.textContent = 'Game over! You guessed incorrectly.';
+                // Reset the game
+                seenImages = [];
+                selectRandomImage();
+            } else {
+                gameStatus.textContent = '';
+                seenImages.push(currentImage);
+                selectRandomImage();
+            }
+        }
+</script>
+</body>
+
+</html>

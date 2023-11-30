@@ -24,11 +24,17 @@ function typeWriterEffect(element, message, index) {
 
 function getTimeOfDay() {
     var hour = new Date().getHours();
-    if (hour < 12) {
+    var minute = new Date().getMinutes();
+    if (hour < 5 || (hour === 5 && minute < 30)) {
+        return 'early morning';
+    } else if (hour < 12) {
         return 'morning';
-    } else if (hour < 18) {
+    } else if (hour < 17 || (hour === 17 && minute < 30)) {
         return 'afternoon';
-    } else {
+    } else if (hour < 20 || (hour === 20 && minute < 30)) {
         return 'evening';
+    } else {
+        return 'night';
     }
 }
+

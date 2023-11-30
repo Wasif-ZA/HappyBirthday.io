@@ -38,24 +38,19 @@
 <body class="bg-gray-100 flex flex-col justify-center items-center min-h-screen p-4">
     <div class="w-full max-w-4xl text-center">
         <div class="typewriter mb-4">
-            <h1 id="padawanMessage" class="text-3xl font-bold">What is your name, young Padawan?</h1>
+            <h1 id="padawanMessage" class="text-3xl font-bold">WHATS YOUR NAME</h1>
             <h2 id="timeBasedGreeting" class="text-2xl font-bold hidden"></h2>
         </div>
         <input type="text" id="nameInput" class="text-lg w-full p-2 border-b border-gray-300 bg-transparent mb-6" onkeypress="handleKeyPress(event)">
         
         <div id="habitCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 hidden">
             <div class="habit-card bg-blue-200">
-                <input type="text" id="morningHabit" placeholder="Thought Pad" class="w-full p-2 border-b border-gray-200 bg-transparent">
-            </div>
-            <div class="habit-card bg-green-200">
-                <input type="text" id="afternoonHabit" placeholder="HabitCreater" class="w-full p-2 border-b border-gray-300 bg-transparent">
+             <a href="wisdom.html" class="block p-2 text-lg text-gray-700 hover:text-gray-900">wisdom</a>
             </div>
             <div class="habit-card bg-yellow-200">
-                <input type="text" id="eveningHabit" placeholder="Photos" class="w-full p-2 border-b border-gray-300 bg-transparent">
+                <a href="Photos.html" class="block p-2 text-lg text-gray-700 hover:text-gray-900">Photos</a>
             </div>
-            <div class="habit-card bg-pink-200">
-                <input type="text" id="nightHabit" placeholder="Motivation" class="w-full p-2 border-b border-gray-300 bg-transparent">
-            </div>
+            
         </div>
     </div>
     <script src="app.js"></script>
