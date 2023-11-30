@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .typewriter h1, .typewriter h2 {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: blink-caret .75s step-end infinite;
+            font-size: 1.5rem;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+
+        .habit-card {
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: scale(1);
+            transition: transform .3s ease-in-out;
+        }
+
+        .habit-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col justify-center items-center min-h-screen p-4">
+    <div class="w-full max-w-4xl text-center">
+        <div class="typewriter mb-4">
+            <h1 id="padawanMessage" class="text-3xl font-bold">WHATS YOUR NAME</h1>
+            <h2 id="timeBasedGreeting" class="text-2xl font-bold hidden"></h2>
+        </div>
+        <input type="text" id="nameInput" class="text-lg w-full p-2 border-b border-gray-300 bg-transparent mb-6" onkeypress="handleKeyPress(event)">
+        
+        <div id="habitCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 hidden">
+            <div class="habit-card bg-blue-200">
+             <a href="wisdom.html" class="block p-2 text-lg text-gray-700 hover:text-gray-900">wisdom</a>
+            </div>
+            <div class="habit-card bg-yellow-200">
+                <a href="Photos.html" class="block p-2 text-lg text-gray-700 hover:text-gray-900">Photos</a>
+            </div>
+            
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
