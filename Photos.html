@@ -117,7 +117,7 @@
        
         function selectRandomImage() {
             var randomIndex = Math.floor(Math.random() * images.length);
-            var imagePath = / + images[randomIndex].imageName; 
+            var imagePath = "/" + images[randomIndex].imageName; 
             document.getElementById('randomImage').src = imagePath;
             document.getElementById('memoryDescription').textContent = images[randomIndex].description;
         }
